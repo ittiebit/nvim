@@ -135,6 +135,15 @@ return {
             javascript = true,
           },
           provideFormatter = true,
+          format = {
+            templating = true,
+            wrapLineLength = 120,
+            wrapAttributes = 'auto',
+          },
+          hover = {
+            documentation = true,
+            references = true,
+          },
         },
         jq = {},
         -- rust_analyzer = {},
@@ -164,6 +173,10 @@ return {
       }
 
       require('java').setup({})
+
+      require('nvim-ts-autotag').setup({})
+
+      require('nvim-autopairs').setup({})
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
