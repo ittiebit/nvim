@@ -154,7 +154,7 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
-        --
+
 
         lua_ls = {
           -- cmd = {...},
@@ -173,6 +173,7 @@ return {
       }
 
       require('java').setup({})
+      -- require('typescript').setup({})
 
       require('nvim-ts-autotag').setup({})
 

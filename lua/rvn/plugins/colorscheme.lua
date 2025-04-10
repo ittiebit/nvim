@@ -19,8 +19,6 @@ return {
                     operators = {},
                 },
             })
-
-            vim.cmd.colorscheme "catppuccin"
         end,
 
     },
@@ -33,6 +31,18 @@ return {
                     italic = false,
                 },
             })
+        end
+    },
+    {
+        "Mofiqul/dracula.nvim",
+        name = "dracula",
+        config = function()
+            require("dracula").setup({
+                italic_comment = true,
+                transparent_bg = true,
+            })
+
+            vim.cmd.colorscheme "dracula"
         end
     },
 }
