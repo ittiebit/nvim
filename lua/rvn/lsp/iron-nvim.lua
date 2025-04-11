@@ -1,5 +1,6 @@
 return {
   "hkupty/iron.nvim",
+  enabled = false,
   config = function()
     local iron = require("iron.core")
 
