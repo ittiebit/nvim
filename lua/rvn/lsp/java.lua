@@ -6,6 +6,9 @@ return {
     dependencies = {
         {
             'neovim/nvim-lspconfig',
+            'williamboman/mason-lspconfig.nvim',
+            'williamboman/mason.nvim',
+            'mfussenegger/nvim-dap',
             setup = {
                 jdtls = function()
                     -- Your nvim-java configuration goes here

@@ -175,7 +175,7 @@ return {
             },
         }
 
-        require('java').setup({})
+        -- require('java').setup({})
         -- require('typescript').setup({})
 
         require('nvim-ts-autotag').setup({})
@@ -211,7 +211,7 @@ return {
             },
         }
 
-        require("quarto").activate()
+        -- require("quarto").activate()
 
     end,
 }
