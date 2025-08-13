@@ -38,3 +38,28 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+--[[
+
+
+]]--
+
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+
+-- Run code automatically in second tmux window
+local last_cmd = ''
+vim.keymap.set('n', '<leader>re', function()
+    -- Use the last command for default
+    local input = vim.fn.input('Run command: ', last_cmd)
+    -- Don't send empty commands
+    if input ~= '' then
+        -- Save current command as last_cmd
+        last_cmd = input
+        -- Send command to 2nd window
+        vim.fn.system("tmux send-keys -t 2 '" .. input .. "' C-m")
+        -- Switch to 2nd window
+        vim.fn.system('tmux select-window -t 2')
+    end
+end, { desc = 'Send code execution command to 2nd tmux window', })
