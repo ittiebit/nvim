@@ -2,6 +2,7 @@ return {
 
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+
     dependencies = {
         -- Automatically install LSPs and related tools to stdpath for Neovim
         { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -19,6 +20,7 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
             callback = function(event)
+                local bufnr = event.buf
                 -- NOTE: Remember that Lua is a real programming language, and as such it is possible
                 -- to define small helper and utility functions so you don't have to repeat yourself.
                 --
@@ -105,6 +107,9 @@ return {
                     end, '[T]oggle Inlay [H]ints')
                 end
 
+                -- https://github.com/nix-community/kickstart-nix.nvim/blob/6b28fa398a69b99318bde099fb9566eead5fa02e/nvim/plugin/autocommands.lua#L94
+                vim.lsp.inlay_hint.enable(true)
+
                 -- vim.diagnostic.config({ virtual_lines = true })
                 vim.diagnostic.config({ virtual_text = true })
             end,
@@ -149,7 +154,20 @@ return {
                 },
             },
             jq = {},
-            ts_ls = {},
+            ts_ls = {
+                -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+                filetypes = { 'typescript', 'javascript', 'vue' },
+                init_options = {
+                    plugins = {
+                        {
+                            name = '@vue/typescript-plugin',
+                            location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                            languages = { 'vue' },
+                        },
+                    },
+                },
+            },
+            vue_ls = {},
             lua_ls = {
                 -- cmd = {...},
                 -- filetypes = { ...},

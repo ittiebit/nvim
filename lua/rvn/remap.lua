@@ -63,3 +63,4 @@ vim.keymap.set('n', '<leader>re', function()
         vim.fn.system('tmux select-window -t 2')
     end
 end, { desc = 'Send code execution command to 2nd tmux window', })
+
