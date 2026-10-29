@@ -19,6 +19,7 @@ return {
                     operators = {},
                 },
             })
+            --vim.cmd.colorscheme "catppuccin"
         end,
 
     },
@@ -31,6 +32,7 @@ return {
                     italic = false,
                 },
             })
+            -- vim.cmd.colorscheme "rose-pine"
         end
     },
     {
@@ -45,4 +47,17 @@ return {
             vim.cmd.colorscheme "dracula"
         end
     },
+    {
+        "metalelf0/base16-black-metal-scheme",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.opt.termguicolors = true
+            -- vim.cmd.colorscheme("base16-black-metal")
+            vim.api.nvim_set_hl(0, "Comment", {
+                fg = "#555555",
+                italic = true,
+            })
+        end,
+    }
 }
